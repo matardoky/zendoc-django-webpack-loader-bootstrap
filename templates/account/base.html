@@ -1,11 +1,15 @@
+{% load render_bundle from webpack_loader %}
+
 <!DOCTYPE html>
 <html>
   <head>
+    {% render_bundle "index" %}
     <title>{% block head_title %}{% endblock %}</title>
     {% block extra_head %}
     {% endblock %}
   </head>
   <body>
+  <div class="container">
     {% block body %}
 
     {% if messages %}
@@ -19,7 +23,7 @@
     </div>
     {% endif %}
 
-    <div>
+    {% comment %} <div>
       <strong>Menu:</strong>
       <ul>
         {% if user.is_authenticated %}
@@ -30,11 +34,12 @@
         <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
         {% endif %}
       </ul>
-    </div>
+    </div> {% endcomment %}
     {% block content %}
     {% endblock %}
     {% endblock %}
     {% block extra_body %}
     {% endblock %}
+  </div>
   </body>
 </html>
