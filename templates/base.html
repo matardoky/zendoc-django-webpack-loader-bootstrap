@@ -1,11 +1,12 @@
 {% load static %}
+{% load render_bundle from webpack_loader %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="{% static "bundles/index.bundle.js" %}"></script>
+    {% render_bundle 'index' 'css'%}
     <!--==========BOXICONS=============-->
     
     <title>Ecommerce Website</title>
@@ -39,29 +40,7 @@
 
     </header>
 
-    <script>
-        const showMenu = (toggleId, navId) =>{
-            const toggle = document.getElementById(toggleId)
-            const nav = document.getElementById(navId)
-        
-            if(toggle && nav){
-                toggle.addEventListener('click', ()=>{
-                    nav.classList.toggle('show')
-                })
-            }
-        }
-        showMenu('nav-toggle','nav-menu'); 
-
-        const navLink = document.querySelectorAll('.nav__link')
-        const navMenu = document.getElementById('nav-menu')
-        
-        function linkAction(){
-           navMenu.classList.remove('show')
-        }
-        
-        navLink.forEach(n => n.addEventListener('click', linkAction))
-    
-    </script>
+    {% render_bundle 'index' 'js' %}
     
 </body>
 </html>

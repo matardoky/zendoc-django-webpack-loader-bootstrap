@@ -135,3 +135,17 @@ h1,h2,h3,p,ul{
 .show{
     left: 0;
 }
+
+.active{
+    position: relative;
+    &::before{
+        content: "";
+        position: absolute;
+        bottom: -.5rem;
+        left: 45%;
+        width: 4px;
+        height: 4px;
+        background-color: var(--dark-color);
+        border-radius: 50%;
+    }
+}
